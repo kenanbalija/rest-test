@@ -61,7 +61,7 @@ class UserRepository
      */
     public function listOwnsKey()
     {
-        return $this->list = $this->model->select('apiKey')->where('listId', '=', $this->listId)->exists();
+        return $this->model->where('listId', '=', $this->listId)->where('apiKey', '=', $this->apiKey)->exists();
     }
 
     /**
