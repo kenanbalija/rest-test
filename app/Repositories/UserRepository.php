@@ -61,14 +61,7 @@ class UserRepository
      */
     public function listOwnsKey()
     {
-        $this->list= $this->model->where('listId', '=', $this->listId)->get();
-        foreach($this->list as $list) {
-            $key = $list['apiKey'];
-            if ($key == $this->apiKey) {
-                return true;
-            }
-        }
-        return false;
+        return $this->list = $this->model->select('apiKey')->where('listId', '=', $this->listId)->exists();
     }
 
     /**
@@ -76,11 +69,7 @@ class UserRepository
      */
     public function getEmails()
     {
-        $emails = [];
-        foreach ($this->list as $list) {
-            $emails[] = $list['email'];
-        }
-        return $emails;
+        return $this->model->select('email')->where('listId', '=', $this->listId)->get();
     }
 
     /**
