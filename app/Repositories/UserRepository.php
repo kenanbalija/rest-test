@@ -104,12 +104,12 @@ class UserRepository
      */
     public function saveSubscription($data)
     {
-        $user = new User();
+        $user = $this->model;
         $user['listId'] = $data['listId'];
         $user['apiKey'] = $data['apiKey'];
         $user['email'] = $data['email'];
         $user['name'] = $data['name'];
         $user['surname'] = $data['surname'];
-        return $user->save();
+        $user->save();
     }
 }
