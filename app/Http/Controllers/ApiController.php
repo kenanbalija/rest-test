@@ -56,11 +56,13 @@ class ApiController extends Controller
 
             if ($this->userRepo->listOwnsKey()) {
 
-                if ($this->userRepo->emailExists($data['email'])) {
+                if (!$this->userRepo->emailExists($data['email'])) {
 
                     $this->userRepo->saveSubscription($data->all());
                     return response()->json('User subscribed', 200);
                 };
+                return response()->json('Email already exists!', 400);
+
             }
             return response()->json('This apikey does not match this list ID!', 400);
 

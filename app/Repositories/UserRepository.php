@@ -80,7 +80,7 @@ class UserRepository
     {
         $emails = $this->getEmails();
 
-        if (in_array($email, $emails)) {
+        if (in_array($email, (array)$emails)) {
             return true;
         }
         return false;
@@ -95,7 +95,7 @@ class UserRepository
     {
         $user = $this->model;
         $user['listId'] = $data['listId'];
-        $user['apiKey'] = $data['apiKey'];
+        $user['apiKey'] = $data['apikey'];
         $user['email'] = $data['email'];
         $user['name'] = $data['name'];
         $user['surname'] = $data['surname'];
