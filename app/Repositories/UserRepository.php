@@ -79,10 +79,13 @@ class UserRepository
     public function emailExists($email)
     {
         $emails = $this->getEmails();
-
-        if (in_array($email, (array)$emails)) {
-            return true;
+        foreach ($emails as $em) {
+            if ($em['email'] == $email)
+                return true;
         }
+//        if (in_array($email, $emails)) {
+//            return true;
+//        }
         return false;
     }
 
